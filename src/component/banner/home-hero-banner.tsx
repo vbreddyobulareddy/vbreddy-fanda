@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HomePageHeroBanner = () => {
   const moneyBagImageUrl = new URL(
     "./../../assets/images/FandA_from_oneplace.jpg",
@@ -6,8 +8,10 @@ const HomePageHeroBanner = () => {
   return (
     <>
       <div className="h-screen flex flex-col items-center justify-center w-full bg-white p-4">
-        <div className="w-2/3 flex flex-col lg:flex-row-reverse">
-          <img src={moneyBagImageUrl} className="max-w-sm" />
+        <div className="w-full lg:w-2/3 flex flex-col lg:flex-row-reverse">
+          <div className="flex justify-center">
+            <img src={moneyBagImageUrl} className="max-w-sm mt-14 lg:mt-0" />
+          </div>
           <div>
             <h1 className="text-2xl lg:text-4xl font-FFNortExtLt font-bold">
               Finance and Accounts - (<span className="font-FFNortExtBold">FandA</span>)
@@ -30,9 +34,9 @@ const HomePageHeroBanner = () => {
               The pocket friendly <span className="text-black font-FFNortExtBold">FandA</span> WEB application makes all of these EASY to manage
               ...!
             </p>
-            <button className="btn btn-secondary text-white mt-4">
+            <Link to="/open/sign-in" className="btn btn-secondary text-white mt-4">
               Get Started for Free!
-            </button>
+            </Link>
           </div>
         </div>
       </div>
