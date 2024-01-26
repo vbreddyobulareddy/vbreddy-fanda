@@ -1,4 +1,4 @@
-import { faAt, faKey } from "@fortawesome/free-solid-svg-icons";
+import { faAt, faBuilding, faKey, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import {
   Field,
   VerticalOneColForm,
@@ -13,7 +13,7 @@ const SignUpPageContainer = () => {
       label: "Organization Name",
       placeholder: "Please enter Organization Name",
       type: "text",
-      icon: <FontAwesomeIcon icon={faAt} className="h-4 m-4 text-gray-300" />,
+      icon: <FontAwesomeIcon icon={faBuilding} className="h-4 m-4 text-gray-300" />,
       defaultValue: "",
     },
     {
@@ -21,7 +21,7 @@ const SignUpPageContainer = () => {
       label: "Primary Contact Name",
       placeholder: "Please enter Name",
       type: "text",
-      icon: <FontAwesomeIcon icon={faAt} className="h-4 m-4 text-gray-300" />,
+      icon: <FontAwesomeIcon icon={faUser} className="h-4 m-4 text-gray-300" />,
       defaultValue: "",
     },
     {
@@ -29,7 +29,7 @@ const SignUpPageContainer = () => {
       label: "Primary Contact Mobile Number",
       placeholder: "Please enter Mobile Number",
       type: "text",
-      icon: <FontAwesomeIcon icon={faAt} className="h-4 m-4 text-gray-300" />,
+      icon: <FontAwesomeIcon icon={faPhone} className="h-4 m-4 text-gray-300" />,
       defaultValue: "",
     },
     {
