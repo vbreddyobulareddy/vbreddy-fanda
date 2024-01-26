@@ -1,3 +1,15 @@
+@import url("./assets/fonts/FFNortBold/stylesheet.css");
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+@font-face {
+  font-family: "eurostile";
+  src: url("/fonts/eurostile-cufonfonts-webfont/eurostile.woff");
+}
+
+@font-face {
+  font-family: "quickpen";
+  src: url("/fonts/quick-pen/Trial\ by\ Cupcakes\ -\ Quickpen.otf");
+}
+
