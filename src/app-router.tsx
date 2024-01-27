@@ -5,6 +5,7 @@ import DefaultPageLayout from "./container/layouts/default-layout.tsx";
 import AuthPageLayout from "./container/layouts/auth-layout.tsx";
 import AppPageLayout from "./container/layouts/app-layout.tsx";
 import SignUpPageContainer from "./container/auth/sign-up.tsx";
+import StatusSnapPageContainer from "./container/auth/status-snap.tsx";
 
 const routesList = [
   {
@@ -28,6 +29,10 @@ const routesList = [
       {
         path: "sign-up",
         element: <SignUpPageContainer />,
+      },
+      {
+        path: "status-snap",
+        element: <StatusSnapPageContainer />,
       },
     ],
   },

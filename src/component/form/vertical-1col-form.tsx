@@ -1,21 +1,13 @@
-import { useFormik } from "formik";
+import { Formik } from "formik";
+import { FormOptionsType } from "./form-types";
+import { FieldType, FieldsList } from "../field/field-types";
+import InputTextFieldComponent from "../field/input-text-field";
+import InputEmailFieldComponent from "../field/input-email-field";
+import InputMobileFieldComponent from "../field/input-mobile-field";
+import InputPasswordFieldComponent from "../field/input-password-field";
+import InputButtonFieldComponent from "../field/input-button-field";
 
-export interface Field {
-  id: string;
-  label: string;
-  placeholder: string;
-  type: string;
-  icon: any;
-  defaultValue: string;
-}
-
-export interface Options {
-  fields: Field[];
-  handleSubmit: (values: any) => void;
-  children: React.ReactNode;
-}
-
-export const VerticalOneColForm = (props: Options) => {
+export const VerticalOneColForm = (props: FormOptionsType) => {
   const { fields, handleSubmit } = props;
 
   const fieldEntity: any = {};
@@ -23,41 +15,58 @@ export const VerticalOneColForm = (props: Options) => {
     fieldEntity[item.id] = item.defaultValue;
   });
 
-  const { values, handleChange } = useFormik<any>({
-    initialValues: fieldEntity,
-    onSubmit: handleSubmit,
-  });
-  console.log("--== ", fields);
   return (
     <>
-      {fields &&
-        fields.map((item: Field, index: number) => {
+      <Formik initialValues={fieldEntity} onSubmit={handleSubmit}>
+        {() => {
           return (
             <>
-              <div key={item.id} className="m-1">
-                <label htmlFor={item.id} className="sr-only">
-                  {item.label}
-                </label>
-                <div className="relative">
-                  <input
-                    autoFocus={index === 0}
-                    className="w-full rounded-lg border-gray-400 p-4 pe-12 text-sm shadow-sm"
-                    id={item.id}
-                    name={item.id}
-                    placeholder={item.label}
-                    type={item.type || "text"}
-                    onChange={handleChange}
-                    value={values[item.id]}
-                  />
-                  <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    {item.icon}
-                  </span>
-                </div>
-              </div>
+              {fields &&
+                fields.map((item: FieldType, index: number) => {
+                  if (item.grade.field === FieldsList.INPUT_TEXT_FIELD) {
+                    return (
+                      <InputTextFieldComponent
+                        {...item}
+                        autoFocus={index === 0}
+                        key={item.id}
+                      />
+                    );
+                  }
+                  if (item.grade.field === FieldsList.INPUT_EMAIL_FIELD) {
+                    return (
+                      <InputEmailFieldComponent
+                        {...item}
+                        autoFocus={index === 0}
+                        key={item.id}
+                      />
+                    );
+                  }
+                  if (item.grade.field === FieldsList.INPUT_MOBILE_FIELD) {
+                    return (
+                      <InputMobileFieldComponent
+                        {...item}
+                        autoFocus={index === 0}
+                        key={item.id}
+                      />
+                    );
+                  }
+                  if (item.grade.field === FieldsList.INPUT_PASSWORD_FIELD) {
+                    return (
+                      <InputPasswordFieldComponent
+                        {...item}
+                        autoFocus={index === 0}
+                        key={item.id}
+                      />
+                    );
+                  }
+                })}
+              <InputButtonFieldComponent name={props.actionName} handleOnClick={handleSubmit}>
+                {props.children}
+              </InputButtonFieldComponent>
             </>
           );
-        })}
-      {props.children}
+        }}
+      </Formik>
     </>
   );
 };
