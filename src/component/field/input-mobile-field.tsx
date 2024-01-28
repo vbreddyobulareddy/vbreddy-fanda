@@ -1,8 +1,7 @@
 import { Field, useFormikContext } from "formik";
-import { FieldType } from "./field-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const InputMobileFieldComponent = (item: FieldType) => {
+const InputMobileFieldComponent = (item: any) => {
   const formikContext: any = useFormikContext<any>();
   const validateRequireRule = (value: any) => {
     if (!value || value.trim().length === 0) {
@@ -57,12 +56,22 @@ const InputMobileFieldComponent = (item: FieldType) => {
                 </div>
               </div>
 
-              {showError && (
+              {showError ? (
                 <div className="label">
                   <span className="label-text-alt text-red-600">
                     {formikContext.errors[item.id].text}
                   </span>
                 </div>
+              ) : (
+                <>
+                  {item.apiError && (
+                    <div className="label">
+                      <span className="label-text-alt text-red-600">
+                        {item.validationMsg}
+                      </span>
+                    </div>
+                  )}
+                </>
               )}
             </label>
           </>

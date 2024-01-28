@@ -30,4 +30,5 @@ export interface OrgUnitPersonType {
 
 export interface AuthSliceStoreType {
   orgUnitPerson: Partial<OrgUnitPersonType>;
+  validations: Partial<any>;
 }

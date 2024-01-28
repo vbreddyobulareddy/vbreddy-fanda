@@ -11,7 +11,7 @@ export const VerticalOneColForm = (props: FormOptionsType) => {
   const { fields, handleSubmit } = props;
 
   const fieldEntity: any = {};
-  fields.forEach((item) => {
+  fields.forEach((item: any) => {
     fieldEntity[item.id] = item.defaultValue;
   });
 

@@ -1,8 +1,7 @@
 import { Field, useFormikContext } from "formik";
-import { FieldType } from "./field-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const InputPasswordFieldComponent = (item: FieldType) => {
+const InputPasswordFieldComponent = (item: any) => {
   const formikContext: any = useFormikContext<any>();
   const validateRequireRule = (value: any) => {
     if (!value || value.trim().length === 0) {
@@ -43,12 +42,22 @@ const InputPasswordFieldComponent = (item: FieldType) => {
                   />
                 </span>
               </div>
-              {showError && (
+              {showError ? (
                 <div className="label">
                   <span className="label-text-alt text-red-600">
                     {formikContext.errors[item.id].text}
                   </span>
                 </div>
+              ) : (
+                <>
+                  {item.apiError && (
+                    <div className="label">
+                      <span className="label-text-alt text-red-600">
+                        {item.validationMsg}
+                      </span>
+                    </div>
+                  )}
+                </>
               )}
             </label>
           </>

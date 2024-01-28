@@ -20,7 +20,6 @@ const InputButtonFieldComponent = (props: ButtonField) => {
     disabled = formValuesStatus > 0;
     */
   }
-  console.log("--=**=> InputButtonFieldComponent ", disabled, formikContext);
 
   return (
     <>

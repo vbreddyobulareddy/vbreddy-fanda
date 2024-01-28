@@ -12,13 +12,16 @@ export interface FieldType {
   icon: any;
   defaultValue: string;
   autoFocus?: boolean;
+  validationMsg?: string;
+  error?: any;
 }
 export interface ButtonField {
   name: string;
   handleOnClick: (event: any) => void;
   children?: ReactNode;
   allowReset?: boolean;
-  align?: string
+  align?: string;
+  errors?: any;
 }
 export const FieldsList = {
   INPUT_TEXT_FIELD: "input-text-field",

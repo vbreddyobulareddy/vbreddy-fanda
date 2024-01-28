@@ -1,9 +1,7 @@
-import { FieldType } from "../field/field-types";
-
-
 export interface FormOptionsType {
-  fields: FieldType[];
+  fields: any;
   handleSubmit: (values: any) => void;
   actionName: string;
   children: React.ReactNode;
+  validations?: any
 }

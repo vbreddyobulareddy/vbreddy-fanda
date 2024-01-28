@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const StatusSnapPageContainer = () => {
   const { orgUnitPerson } = useSelector((state: any) => state.authSliceStore);
 
-  console.log("--==orgUnitPerson ", orgUnitPerson);
-
   const thankQCardUrl = new URL(
     "./../../assets/images/thank-you-card.jpg",
     import.meta.url

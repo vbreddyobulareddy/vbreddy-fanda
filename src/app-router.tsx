@@ -6,6 +6,7 @@ import AuthPageLayout from "./container/layouts/auth-layout.tsx";
 import AppPageLayout from "./container/layouts/app-layout.tsx";
 import SignUpPageContainer from "./container/auth/sign-up.tsx";
 import StatusSnapPageContainer from "./container/auth/status-snap.tsx";
+import DashboardPageContainer from "./container/dashboard/index.tsx";
 
 const routesList = [
   {
@@ -42,7 +43,7 @@ const routesList = [
     children: [
       {
         path: "dashboard",
-        element: <SignInPageContainer />,
+        element: <DashboardPageContainer />,
       },
     ],
   },

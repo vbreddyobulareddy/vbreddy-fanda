@@ -1,5 +1,15 @@
 import { gql } from "@apollo/client";
 
+export const MUTATE_CHECK_USERNAME_PASSWORD = gql`
+  mutation getToken($userName: String!, $password: String!) {
+    getToken(userName: $userName, password: $password) {
+      id
+      token
+      message
+    }
+  }
+`;
+
 export const SET_ORG_UNIT_PERSON = gql`
   mutation setOrgUnitPerson(
     $orgUnitName: String!
@@ -54,3 +64,46 @@ export const SET_ORG_UNIT_PERSON = gql`
     }
   }
 `;
+
+export const CHECK_DUPLICATES = gql`
+  query checkDuplicates(
+    $tableName: String!
+    $fieldName: String!
+    $fieldVal: String!
+    $fieldRef: String!
+  ) {
+    checkDuplicates(
+      tableName: $tableName
+      fieldName: $fieldName
+      fieldVal: $fieldVal
+      fieldRef: $fieldRef
+    ) {
+      count
+      payload {
+        tableName
+        fieldName
+        fieldVal
+        fieldRef
+      }
+    }
+  }
+`;
+
+/***
+ * 
+ * 
+  client
+    .mutate({
+      mutation: SET_ORG_UNIT_PERSON,
+      variables: vars,
+    })
+    .then(
+      (result: any) => {},
+      (error: any) => {
+        console.log("--=-*2*-=> SET_ORG_UNIT_PERSON ", error);
+      }
+    );
+ * 
+ * 
+ * 
+ */
