@@ -29,8 +29,8 @@ export const authSliceStore = createSlice({
 export const { setOrgUnitPerson, setValidations } = authSliceStore.actions;
 
 export const validateSignUpFields =
-  (payload: any) => async (interceptors: any) => {
-    const {dispatch, client} = interceptors
+  (payload: any) => async (dispatch: any, getState: any, client: any) => {
+    console.log("--==validateSignUpFields ", getState, payload);
     const event = {
       id: new Date().getTime(),
       type: APPSTATUSTYPES.APOLLO_CLIENT_MUTATION,
@@ -103,8 +103,8 @@ export const validateSignUpFields =
   };
 
 export const mutateOrgUnitPerson =
-  (payload: any) => async (interceptors: any) => {
-    const {dispatch, client} = interceptors
+  (payload: any) => async (dispatch: any, getState: any, client: any) => {
+    console.log("--==mutateOrgUnitPerson ", getState, payload);
     const vars = {
       orgUnitName: payload.orgName,
       orgUnitEmail: payload.orgEmail.trim(),
@@ -151,9 +151,8 @@ export const mutateOrgUnitPerson =
   };
 
 export const queryTokenByUserNameAndPwd =
-  (payload: any) => async (interceptors: any) => {
-    const {dispatch, client} = interceptors
-    console.log("--==queryUserNameAndPwdToken ", payload);
+  (payload: any) => async (dispatch: any, getState: any, client: any) => {
+    console.log("--==queryUserNameAndPwdToken ", getState, payload);
     const event = {
       id: new Date().getTime(),
       type: APPSTATUSTYPES.APOLLO_CLIENT_MUTATION,
