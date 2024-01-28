@@ -19,9 +19,9 @@ export const metaSliceStore = createSlice({
 export const { fetchCodeValues } = metaSliceStore.actions;
 
 export const queryCodeValues =
-  () => async (dispatch: any, getState: any, client: any) => {
-    const stateEntity = getState();
-    console.log("--==> queryCodeValues ", stateEntity, client);
+  () => async (interceptors: any) => {
+    const {dispatch, client} = interceptors
+    console.log("--==> queryCodeValues ", client);
     dispatch(fetchCodeValues([]));
   };
 /*
